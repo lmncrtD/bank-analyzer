@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: bank-analyzer
+Version: 0.0.1
+Summary: First full project for Git
+Requires-Python: >=3.13
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0; extra == "dev"
