@@ -1,6 +1,6 @@
 from pathlib import Path
-from src.bank_analyzer import get_total_by_type
-from src.bank_analyzer import get_top_transaction
+from bank_analyzer import get_total_by_type
+from bank_analyzer import get_top_transaction
 import json
 
 def generate_report(transactions:list[dict], output_path: Path) -> None:

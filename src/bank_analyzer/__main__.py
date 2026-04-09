@@ -1,9 +1,9 @@
 from pathlib import Path
-from src.bank_analyzer import get_top_transaction
-from src.bank_analyzer import get_total_by_type
-from src.bank_analyzer import get_transactions_by_account
-from src.bank_analyzer import generate_report
-from src.bank_analyzer import load_transactions
+from bank_analyzer import get_top_transaction
+from bank_analyzer import get_total_by_type
+from bank_analyzer import get_transactions_by_account
+from bank_analyzer import generate_report
+from bank_analyzer import load_transactions
 
 def main() -> None:
     data_path = Path(__file__).parent.parent.parent
