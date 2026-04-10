@@ -20,6 +20,7 @@ def sample_csv(tmp_path):
     with open(csv_file, "r", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
+            row['amount'] = float(row['amount'])
             result.append(row)
 
     return result
@@ -44,6 +45,6 @@ def test_correct_transactions_by_account(sample_csv):
 
 def test_top_transactions(sample_csv):
     assert get_top_transaction(sample_csv) == [
-        {"account_id": "ACC004", "amount": "100000.00", "type": "withdrawal"},
-        {"account_id": "ACC001", "amount": "100000.00", "type": "deposit"}
+        {"account_id": "ACC004", "amount": 100000.00, "type": "withdrawal"},
+        {"account_id": "ACC001", "amount": 100000.00, "type": "deposit"}
     ]
