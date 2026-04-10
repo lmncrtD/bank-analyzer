@@ -11,6 +11,7 @@ def load_transactions(file_path: Path) -> list[dict]:
         reader = csv.DictReader(f)
 
         for row in reader:
+            row['amount'] = float(row['amount'])
             result.append(row)
 
     return result
