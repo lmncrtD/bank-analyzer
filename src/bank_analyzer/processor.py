@@ -10,6 +10,7 @@ def get_transactions_by_account(transactions: list[dict], account_id: str) -> li
     result: list[dict] = []
     for transaction in transactions:
         if transaction["account_id"] == account_id:
+            transaction["amount"] = float(transaction["amount"])
             result.append(transaction)
 
     return result
