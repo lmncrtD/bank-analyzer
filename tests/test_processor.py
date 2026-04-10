@@ -35,9 +35,9 @@ def test_correct_total_by_type(sample_csv):
 def test_correct_transactions_by_account(sample_csv):
     assert "ACC001" in [x['account_id'] for x in get_transactions_by_account(sample_csv, "ACC001")]
     assert get_transactions_by_account(sample_csv, "ACC001") == [
-        {"account_id": "ACC001", "amount": "2000.00", "type": "deposit"},
-        {"account_id": "ACC001", "amount": "4000.00", "type": "deposit"},
-        {"account_id": "ACC001", "amount": "100000.00", "type": "deposit"}
+        {"account_id": "ACC001", "amount": 2000.00, "type": "deposit"},
+        {"account_id": "ACC001", "amount": 4000.00, "type": "deposit"},
+        {"account_id": "ACC001", "amount": 100000.00, "type": "deposit"}
     ]
     assert "ACC003" not in get_transactions_by_account(sample_csv, "ACC001")
     assert len(get_transactions_by_account(sample_csv, "ACC001")) == 3

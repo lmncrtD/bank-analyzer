@@ -27,8 +27,8 @@ def test_validate_fields(sample_csv):
     assert "type" in load[0].keys()
     # Сделаем проверку на то, что содерижмое загруженного файла соответствует структуре
     assert load == [
-        {"account_id": "ACC001", "amount": "2000.00", "type": "deposit"},
-        {"account_id": "ACC003", "amount": "3000.00", "type": "withdrawal"}
+        {"account_id": "ACC001", "amount": 2000.00, "type": "deposit"},
+        {"account_id": "ACC003", "amount": 3000.00, "type": "withdrawal"}
     ]
 
 def test_correct_csv_file(sample_csv):
