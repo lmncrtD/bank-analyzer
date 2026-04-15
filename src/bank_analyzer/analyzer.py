@@ -26,7 +26,7 @@ class TransactionAnalyzer:
         max_amount = max(float(t['amount']) for t in self.transactions)
         return [t for t in self.transactions if float(t['amount']) == max_amount]
 
-    def summary(self):
+    def summary(self) -> dict:
         deposit = self.get_total_by_type("deposit")
         withdrawals = self.get_total_by_type("withdrawal")
         result = {
