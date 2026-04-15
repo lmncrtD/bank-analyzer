@@ -30,10 +30,6 @@ def load_transactions(file_path: Path) -> list[dict]:
 
             result.append(row)
 
-        for row in reader:
-            row['amount'] = float(row['amount'])
-            result.append(row)
-
         if not result:
             raise ValueError("CSV не содержит данных (только заголовки)")
 
