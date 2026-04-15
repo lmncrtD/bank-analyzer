@@ -1,0 +1,14 @@
+{
+    "total_deposits": 39484.3,
+    "total_withdrawals": 97356.31,
+    "net_flow": -57872.009999999995,
+    "top_transaction": [
+        {
+            "account_id": "ACC111",
+            "amount": 92349.06,
+            "type": "withdrawal",
+            "date": "2026-04-01"
+        }
+    ],
+    "transactions_count": 15
+}

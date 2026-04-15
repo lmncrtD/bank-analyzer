@@ -12,14 +12,26 @@ def main() -> None:
     parser.add_argument("--type", type=str, help="Введите тип операции")
     args = parser.parse_args()
     data_path = Path(__file__).parent.parent.parent
+    default_path = data_path / 'data' / 'sample' / "default-report.json"
+    default_account = "ACC001"
+    default_type = "deposit"
     if not args.input:
         raise ValueError("Передай --input, например: --input data/transactions.json")
     loader = load_transactions(data_path / args.input)
     transactions = TransactionAnalyzer(loader)
-    print(transactions.get_total_by_type(args.type))
-    print(transactions.get_transactions_by_account(args.account))
+    if args.type:
+        print(transactions.get_total_by_type(args.type))
+    else:
+        print(transactions.get_total_by_type(default_type))
+    if args.account:
+        print(transactions.get_transactions_by_account(args.account))
+    else:
+        print(transactions.get_transactions_by_account(default_account))
     print(transactions.get_top_transaction())
-    transactions.generate_report(Path(args.output))
+    if args.output:
+        transactions.generate_report(Path(args.output))
+    else:
+        transactions.generate_report(default_path)
     summary = transactions.summary()
     print("\n" + "=" * 3 + " Bank Transaction Analyzer " + "=" * 3)
     print(f"Total deposits: {summary['total_deposits']:,.2f}")
@@ -28,7 +40,7 @@ def main() -> None:
     print(f"Transaction count: {summary['transactions_count']}")
     print("Top transactions: \n", [f"{top['account_id']} | {top['type']} | {float(top['amount']):,.2f} | {top['date']}"
            for top in summary['top_transaction']])
-    print(f"Report saved to: {args.output}")
+    print(f"Report saved to: {args.output or default_path}")
 
 if __name__ == "__main__":
     main()
