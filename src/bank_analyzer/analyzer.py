@@ -22,7 +22,7 @@ class TransactionAnalyzer:
 
         return result
 
-    def get_top_transaction(self) -> dict | None:
+    def get_top_transaction(self) -> list[dict] | None:
         max_amount = max(float(t['amount']) for t in self.transactions)
         return [t for t in self.transactions if float(t['amount']) == max_amount]
 
@@ -41,4 +41,4 @@ class TransactionAnalyzer:
     def generate_report(self, output_path: Path) -> None:
         # создание json файла отчета
         with open(output_path, "w", encoding="utf-8") as f:
-            json.dump(self.summary, f, indent=4, ensure_ascii=False)
+            json.dump(self.summary(), f, indent=4, ensure_ascii=False)
