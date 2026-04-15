@@ -24,7 +24,23 @@ pip install -e .
 ---
 
 ## Project Structure
-![img.png](img.png)
+bank-analyzer/\
+├── data/\
+│ └── sample/\
+│ └─── transactions.csv\
+├── src/\
+│ └── bank_analyzer/\
+│ ├─── init.py\
+│ ├─── main.py\
+│ ├─── analyzer.py\
+│ └─── loader.py\
+├── tests/\
+│ ├── init.py\
+│ ├── test_analyzer.py\
+│ └── test_loader.py\
+├── pyproject.toml
+├── README.md
+└── .gitignore
 
 ---
 ## Example Input/Output
