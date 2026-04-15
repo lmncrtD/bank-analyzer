@@ -26,9 +26,9 @@ class TransactionAnalyzer:
         max_amount = max(float(t['amount']) for t in self.transactions)
         return [t for t in self.transactions if float(t['amount']) == max_amount]
 
-    def generate_report(self, output_path: Path) -> None:
+    def summary(self):
         deposit = self.get_total_by_type("deposit")
-        withdrawals = self.get_total_by_type("withdraw")
+        withdrawals = self.get_total_by_type("withdrawal")
         result = {
             "total_deposits": deposit,
             "total_withdrawals": withdrawals,
@@ -36,7 +36,9 @@ class TransactionAnalyzer:
             "top_transaction": self.get_top_transaction(),
             "transactions_count": len(self.transactions),
         }
+        return result
 
+    def generate_report(self, output_path: Path) -> None:
         # создание json файла отчета
         with open(output_path, "w", encoding="utf-8") as f:
-            json.dump(result, f, indent=4, ensure_ascii=False)
+            json.dump(self.summary, f, indent=4, ensure_ascii=False)
