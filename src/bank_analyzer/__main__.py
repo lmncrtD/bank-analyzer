@@ -4,30 +4,29 @@ from bank_analyzer import load_transactions
 from bank_analyzer import TransactionAnalyzer
 
 def main() -> None:
-    '''Добавить прием аргументов из командой строки используя argparse'''
     parser = argparse.ArgumentParser()
-    parser.add_argument("--input", type=str, help="Введите путь к файлу который хотите загрузить")
-    parser.add_argument("--output", type=str, help="Введите путь куда хотите сохранить файл")
-    parser.add_argument("--account", type=str, help="Введите счет по которому хотите вывести транзакции")
-    parser.add_argument("--type", type=str, help="Введите тип операции")
+    parser.add_argument("--input", type=str, help="Введите путь к файлу который хотите загрузить", required=True)
+    parser.add_argument("--output", type=str, help="Введите путь куда хотите сохранить файл", required=False)
+    parser.add_argument("--account", type=str, help="Введите счет по которому хотите вывести транзакции", required=False)
+    parser.add_argument("--type", type=str, help="Введите тип операции", required=False)
     args = parser.parse_args()
     data_path = Path(__file__).parent.parent.parent
     default_path = data_path / 'data' / 'sample' / "default-report.json"
     default_account = "ACC001"
     default_type = "deposit"
+
     if not args.input:
         raise ValueError("Передай --input, например: --input data/transactions.json")
     loader = load_transactions(data_path / args.input)
     transactions = TransactionAnalyzer(loader)
     if args.type:
-        print(transactions.get_total_by_type(args.type))
+        transactions.get_total_by_type(args.type)
     else:
-        print(transactions.get_total_by_type(default_type))
+        transactions.get_total_by_type(default_type)
     if args.account:
-        print(transactions.get_transactions_by_account(args.account))
+        transactions.get_transactions_by_account(args.account)
     else:
-        print(transactions.get_transactions_by_account(default_account))
-    print(transactions.get_top_transaction())
+        transactions.get_transactions_by_account(default_account)
     if args.output:
         transactions.generate_report(Path(args.output))
     else:
@@ -43,4 +42,7 @@ def main() -> None:
     print(f"Report saved to: {args.output or default_path}")
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        print(f"Ошибка: {e}")
