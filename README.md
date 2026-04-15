@@ -49,10 +49,6 @@ bank-analyzer/\
 ``bank_analyzer --input data/sample/transactions.csv --output data/sample/report.json --type deposit --account ACC001``
 
 ### Example Output
-31000.0\
-[{'account_id': 'ACC001', 'amount': 5000.0, 'type': 'deposit', 'date': '2026-04-01'}, {'account_id': 'ACC001', 'amount': 1500.0, 'type': 'withdrawal', 'date': '2026-04-02'}, {'account_id': 'ACC001', 'amount': 2000.0, 'type': 'deposit', 'date': '2026-04-03'}]\
-[{'account_id': 'ACC003', 'amount': 10000.0, 'type': 'deposit', 'date': '2026-04-01'}, {'account_id': 'ACC005', 'amount': 10000.0, 'type': 'deposit', 'date': '2026-04-01'}]
-
 ===Bank Transaction Analyzer===\
 Total deposits: 31,000.00\
 Total withdrawals: 5,000.00\
