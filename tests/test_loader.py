@@ -6,9 +6,9 @@ from bank_analyzer import load_transactions
 def sample_csv(tmp_path):
     csv_file = tmp_path / "sample.csv"
     csv_file.write_text(
-        "account_id,amount,type\n"
-        "ACC001,2000.00,deposit\n"
-        "ACC003,3000.00,withdrawal\n",
+        "account_id,amount,type,date\n"
+        "ACC001,2000.00,deposit,2021-04-01\n"
+        "ACC003,3000.00,withdrawal,2021-04-01\n",
         encoding="utf-8",
     )
     return csv_file
@@ -25,8 +25,8 @@ def test_validate_fields(sample_csv):
     assert "type" in load[0].keys()
     # Сделаем проверку на то, что содерижмое загруженного файла соответствует структуре
     assert load == [
-        {"account_id": "ACC001", "amount": 2000.00, "type": "deposit"},
-        {"account_id": "ACC003", "amount": 3000.00, "type": "withdrawal"}
+        {"account_id": "ACC001", "amount": 2000.00, "type": "deposit", "date": "2021-04-01"},
+        {"account_id": "ACC003", "amount": 3000.00, "type": "withdrawal", "date": "2021-04-01"}
     ]
 
 def test_correct_csv_file(sample_csv):
