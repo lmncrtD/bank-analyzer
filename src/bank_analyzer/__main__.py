@@ -14,9 +14,6 @@ def main() -> None:
     default_path = data_path / 'data' / 'sample' / "default-report.json"
     default_account = "ACC001"
     default_type = "deposit"
-
-    if not args.input:
-        raise ValueError("Передай --input, например: --input data/transactions.json")
     loader = load_transactions(data_path / args.input)
     transactions = TransactionAnalyzer(loader)
     if args.type:
