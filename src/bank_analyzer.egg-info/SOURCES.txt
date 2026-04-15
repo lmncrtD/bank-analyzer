@@ -2,11 +2,14 @@ README.md
 pyproject.toml
 src/bank_analyzer/__init__.py
 src/bank_analyzer/__main__.py
+src/bank_analyzer/analyzer.py
 src/bank_analyzer/loader.py
-src/bank_analyzer/processor.py
 src/bank_analyzer/report.py
 src/bank_analyzer.egg-info/PKG-INFO
 src/bank_analyzer.egg-info/SOURCES.txt
 src/bank_analyzer.egg-info/dependency_links.txt
 src/bank_analyzer.egg-info/requires.txt
 src/bank_analyzer.egg-info/top_level.txt
+tests/test_loader.py
+tests/test_processor.py
+tests/test_report.py
